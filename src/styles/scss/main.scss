@@ -1,12 +1,19 @@
+@use 'fonts';
+@use 'colors';
+
 @import "reset";
 @import "spacings";
 
-.df {
-  display: flex;
-  &.dc {
-    flex-direction: column;
-  }
-  &.ac {
-    align-items: center;
-  }
+$contentWidth: 1200px;
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: fonts.$p;
+  color: colors.$black;
+}
+
+.container {
+  width: min(100%, $contentWidth);
+  margin-inline: auto;
 }
