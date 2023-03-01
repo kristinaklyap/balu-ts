@@ -3,17 +3,11 @@
 
 @import "reset";
 @import "spacings";
-
-$contentWidth: 1200px;
+@import "container";
 
 
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: fonts.$p;
   color: colors.$black;
-}
-
-.container {
-  width: min(100%, $contentWidth);
-  margin-inline: auto;
 }

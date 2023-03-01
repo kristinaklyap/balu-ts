@@ -1,0 +1,10 @@
+$contentWidth: 1200px;
+
+@mixin container() {
+  width: min(100%, $contentWidth);
+  margin-inline: auto;
+}
+
+.container {
+  @include container
+}
