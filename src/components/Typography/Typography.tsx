@@ -1,6 +1,6 @@
 import classes from './Typography.module.scss';
 
-interface TypographyProps {
+export interface TypographyProps {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'disclaimer';
   component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
   alignment?: 'left' | 'center' | 'right';

@@ -1,0 +1,45 @@
+@use './src/styles/scss/colors';
+
+$alignments: (left, center, right);
+
+.section_title {
+  position: relative;
+
+  &[data-border] {
+    &:after {
+      content: '';
+      position: absolute;
+      border: 1px solid colors.$secondary;
+      bottom: -10px;
+      width: 190px;
+    }
+  }
+
+  &[data-border='light'] {
+    &:after {
+      border: 1px solid colors.$secondary_light;
+    }
+  }
+
+  &[data-border='bold'] {
+    &:after {
+      border: 2px solid colors.$quaternary;
+    }
+  }
+
+  &[data-alignment="center"]:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &[data-alignment="right"]:after {
+    left: unset;
+    right: 5px;
+  }
+
+  &[data-alignment="left"]:after {
+    left: 5px;
+  }
+
+
+}
