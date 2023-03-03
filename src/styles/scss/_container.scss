@@ -5,6 +5,10 @@ $contentWidth: 1200px;
   margin-inline: auto;
 }
 
+@mixin fullHeight() {
+  min-height: calc(100vh - 80px - 230px);
+}
+
 .container {
   @include container
 }

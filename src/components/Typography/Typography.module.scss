@@ -5,6 +5,7 @@ $weights: ("light": 300, "regular": 400, "medium":500, "bold":700);
 $alignments: (left, center, right);
 
 .typography {
+
   @each $name, $font in $fonts {
     &[data-variant=#{$name}] {
       font-size: $font;

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
+import Page from './pages/Page/Page';
 import './App.scss';
 
 const Layout = () => {
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },{
+        path: '/:pageSlug',
+        element: <Page />
       }
     ]
   }
