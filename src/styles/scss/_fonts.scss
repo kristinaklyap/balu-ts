@@ -8,3 +8,14 @@ $h5: 36px;
 $h6: 30px;
 $p: 18px;
 $disclaimer: 12px;
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  line-height: 1.6em;
+  font-weight: 400;
+  letter-spacing: .6px;
+  color: #333;
+}

@@ -5,9 +5,14 @@ interface SectionTitleProps extends TypographyProps {
   border?: 'light' | 'regular' | 'bold';
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ border = 'regular', variant = 'h3', alignment, ...rest }) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({
+                                                     border = 'regular',
+                                                     variant = 'h3',
+                                                     alignment,
+                                                     ...rest
+                                                   }) => {
   return (
-    <div className={classes.section_title} data-border={border} data-alignment={alignment}>
+    <div className={classes.section_title} data-border={border} data-alignment={alignment} data-variant={variant}>
       <Typography alignment={alignment} variant={variant} {...rest} />
     </div>
   );

@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
-import About from './pages/About/About';
+import Page from './pages/Page/Page';
 import './App.scss';
 
 const Layout = () => {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         element: <Home />
       },{
         path: '/about-us',
-        element: <About />
+        element: <Page />
       }
     ]
   }

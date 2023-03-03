@@ -10,8 +10,22 @@ $alignments: (left, center, right);
       content: '';
       position: absolute;
       border: 1px solid colors.$secondary;
-      bottom: -10px;
+      bottom: 20px;
       width: 190px;
+    }
+  }
+
+  &[data-variant='h5'] {
+    &:after {
+      bottom: 10px;
+    }
+  }
+
+  &[data-variant='h6'],
+  &[data-variant='p'],
+  &[data-variant='disclaimer'] {
+    &:after {
+      bottom: 5px;
     }
   }
 
