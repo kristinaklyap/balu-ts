@@ -4,6 +4,8 @@ $alignments: (left, center, right);
 
 .section_title {
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &[data-border] {
     &:after {
@@ -26,6 +28,7 @@ $alignments: (left, center, right);
   &[data-variant='disclaimer'] {
     &:after {
       bottom: 5px;
+
     }
   }
 

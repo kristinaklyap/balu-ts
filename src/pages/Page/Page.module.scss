@@ -1,7 +1,6 @@
 @import './src/styles/scss/container';
 
 .page {
-  @include container;
   @include fullHeight;
 
   display: flex;

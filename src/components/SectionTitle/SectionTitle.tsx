@@ -9,11 +9,13 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
                                                      border = 'regular',
                                                      variant = 'h3',
                                                      alignment,
+                                                     content,
                                                      ...rest
                                                    }) => {
+  console.log('contnet', content)
   return (
     <div className={classes.section_title} data-border={border} data-alignment={alignment} data-variant={variant}>
-      <Typography alignment={alignment} variant={variant} {...rest} />
+      <Typography content={content} alignment={alignment} variant={variant} {...rest} />
     </div>
   );
 };

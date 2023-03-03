@@ -1,12 +1,11 @@
 import useFetch from '../../hooks/use-fetch.hook';
+import { useParams } from 'react-router-dom';
+
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
-
-import classes from './Page.module.scss';
 import Typography from '../../components/Typography/Typography';
-
-interface AboutProps {
-
-}
+import Banner from '../../components/Banner/Banner';
+import Container from '../../components/Container/Container';
+import classes from './Page.module.scss';
 
 interface Page {
   id: number,
@@ -16,16 +15,14 @@ interface Page {
   }
 }
 
-const Page: React.FC<AboutProps> = (props) => {
+const Page = () => {
+  const { pageSlug } = useParams();
 
   const { data, isError, isLoading } = useFetch<Page[]>(
-    `/pages?filters[page_url][$contains]=about-us&populate=deep`
+    `/pages?filters[page_url][$contains]=${pageSlug}&populate=deep`
   );
 
   const productData = data ? data[0] : null;
-
-  console.log('productData', productData);
-
   return (
     <>
       {productData &&
@@ -33,14 +30,18 @@ const Page: React.FC<AboutProps> = (props) => {
           {productData.attributes.content && productData.attributes.content.map((item, index) => {
 
             const type = item['__component'];
+
             if (type === 'banner.banner') {
               const { banner_image, banner_size, banner_title } = item;
-              return <div  key={index}>
-                <p>{banner_image['data'] && banner_image['data']['attributes']['url']}</p>
-                <p>{banner_size}</p>
-                <p>{banner_title}</p>
-              </div>;
+              const imgUrl = `${process.env.REACT_APP_UPLOAD_URL}${banner_image['data']['attributes']['url']}`;
+              return (
+                <Banner key={index}
+                        image={imgUrl}
+                        title={banner_title}
+                        size={banner_size} />);
+
             }
+
             if (type === 'text.text') {
               const {
                 text,
@@ -48,7 +49,10 @@ const Page: React.FC<AboutProps> = (props) => {
                 alignment
               } = item;
 
-              return <Typography key={index} content={text} variant={variant} alignment={alignment} />;
+              return (
+                <Container key={index}>
+                  <Typography content={text} variant={variant} alignment={alignment} />
+                </Container>);
 
             }
             if (type === 'title.section-title') {
@@ -61,16 +65,15 @@ const Page: React.FC<AboutProps> = (props) => {
                 weight
               } = item;
 
-              console.log('weightweightweightweightweight',weight)
-              return <SectionTitle key={index} content={title} variant={variant} weight={weight} border={border}
-                                   component={component} alignment={alignment} />;
+              return (
+                <Container key={index}>
+                  <SectionTitle content={title} variant={variant} weight={weight} border={border}
+                                component={component} alignment={alignment} />
+                </Container>);
+
 
             }
-
-
           })}
-
-
         </div>
       }
     </>
