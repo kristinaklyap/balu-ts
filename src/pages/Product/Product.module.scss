@@ -1,0 +1,144 @@
+@use "./src/styles/scss/breakpoints";
+@import "src/styles/scss/buttons";
+
+.product {
+  display: flex;
+  width: 100%;
+  padding: 100px 0;
+
+  &__images__container {
+    display: flex;
+    gap: 10px;
+    min-width: 50%;
+    width: 100%;
+  }
+  &__image {
+    width: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-position: center;
+      object-fit: contain;
+      transition: ease all .5s;
+      &:hover {
+        transform: scale(2);
+      }
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    img {
+      max-width: 200px;
+      max-height: 100px;
+      display: block;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+  &__info {
+    padding-left: 5rem;
+    width: 100%;
+    text-align: justify;
+  }
+
+  &__name {
+    position: relative;
+    padding-bottom: 10px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      width: 100px;
+      background-color: #767676;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+
+    form {
+      display: flex;
+      align-items: flex-end;
+
+      div {
+        margin-right: 20px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid #767676;
+          text-align: center;
+          padding-left: 10px;
+
+          &::placeholder {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .price_container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .product__price {
+      margin-bottom: 0;
+      font-size: 18px;
+      color: #635347;
+      &--old {
+        font-size: 12px;
+        color: #767676;
+        text-decoration: line-through;
+      }
+    }
+
+    .product__SKU {
+      font-size: 12px;
+      color: #767676;
+      line-height: 1em;
+    }
+  }
+  .add_to_cart {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    button {
+      background: transparent;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      &.add_to_cart_btn {
+        @include button;
+        @include buttonPrimary
+      }
+    }
+  }
+  @media (max-width: breakpoints.$tabletBreakpoint) {
+    flex-wrap: wrap;
+    padding: 100px 20px 0;
+    &__image {
+      max-width: 100%;
+    }
+    &__info {
+      padding-left: 0;
+    }
+  }
+  @media (max-width: breakpoints.$mediumMobileBreakpoint) {
+    &__info {
+      text-align: left;
+    }
+  }
+}
