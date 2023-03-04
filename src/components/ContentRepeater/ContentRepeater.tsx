@@ -3,7 +3,7 @@ import Container from '../Container/Container';
 import Typography from '../Typography/Typography';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import { PageProps } from '../../pages/Page/Page';
-import Slider  from '../Slider/Slider';
+import Slider from '../Slider/Slider';
 
 interface ContentRepeaterProps {
   data: PageProps | null,
@@ -61,7 +61,6 @@ const ContentRepeater: React.FC<ContentRepeaterProps> = ({ data, excluded }) => 
         }
 
         if (type === 'slider.slider' && !excluded?.includes('slider.slider')) {
-          // const sliderData: SliderProps = item;
           const {
             dots,
             image,
@@ -71,9 +70,8 @@ const ContentRepeater: React.FC<ContentRepeaterProps> = ({ data, excluded }) => 
             speed
           } = item;
 
-          const {slide} = item
-          console.log('from content repeater', slide)
-          return <Slider key={index} slides={slide} settings={{dots,image,title,text,infinite,speed}} />;
+          const { slide } = item;
+          return <Slider key={index} slides={slide} settings={{ dots, image, title, text, infinite, speed }} />;
         }
       })}
     </div>
