@@ -12,7 +12,6 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
                                                      content,
                                                      ...rest
                                                    }) => {
-  console.log('contnet', content)
   return (
     <div className={classes.section_title} data-border={border} data-alignment={alignment} data-variant={variant}>
       <Typography content={content} alignment={alignment} variant={variant} {...rest} />
