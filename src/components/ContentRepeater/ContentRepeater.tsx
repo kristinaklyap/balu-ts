@@ -3,18 +3,7 @@ import Container from '../Container/Container';
 import Typography from '../Typography/Typography';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import { PageProps } from '../../pages/Page/Page';
-import Slider, { SliderProps } from '../Slider/Slider';
-
-// type Slide = {
-//   id: number;
-//   title: string;
-//   text: string;
-//   image:string;
-// }
-// interface SliderProps {
-//   dots: boolean;
-//   slide: Slide[]
-// }
+import Slider  from '../Slider/Slider';
 
 interface ContentRepeaterProps {
   data: PageProps | null,
