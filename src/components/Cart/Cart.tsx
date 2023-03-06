@@ -30,7 +30,7 @@ const Cart: React.FC<CartProps> = (props) => {
         <div className={classes.item} key={item.id}>
           <img src={item.img} alt='' />
           <div className={classes.details}>
-            <Link to={`/products/${item.id}`}>
+            <Link to={`/product/${item.id}`}>
               <Typography content={item.title} variant={'p'} component={'p'} />
             </Link>
             <div className={classes.price}>
