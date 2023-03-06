@@ -3,6 +3,8 @@ import useFetch from '../../hooks/use-fetch.hook';
 import Container from '../../components/Container/Container';
 import classes from './Product.module.scss';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../store/cart';
 
 type ImageProps = {
   id: number;
@@ -29,7 +31,8 @@ const IMG_PREFIX = process.env.REACT_APP_UPLOAD_URL;
 
 const Product = () => {
   const [selectedImg, setSelectedImg] = useState(0);
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   const { id } = useParams();
 
@@ -39,7 +42,15 @@ const Product = () => {
 
   const images = data?.attributes.images.data.map((img) => `${IMG_PREFIX}${img.attributes.url}`);
   const addToCartHandler = () => {
-    console.log('add to cart');
+    if (data && images) {
+      dispatch(addToCart({
+        id: +id!,
+        title: data.attributes.title,
+        img: images[0],
+        price: data.attributes.price,
+        quantity: quantity
+      }));
+    }
   };
   return (
     <div className={classes.product_teaser}>

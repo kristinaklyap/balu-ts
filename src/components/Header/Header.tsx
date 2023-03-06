@@ -5,11 +5,14 @@ import { useWindowSize } from '../../hooks/use-windows-size';
 import { ReactComponent as Logo } from './../../assets/logo.svg';
 import { ReactComponent as CartIcon } from './../../assets/cart.svg';
 import classes from './Header.module.scss';
+import Cart from '../Cart/Cart';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 const Header = () => {
   const [openCart, setOpenCart] = useState(false);
   const [openNav, setOpenNav] = useState(false);
-  const quantityInCart = 0;
+  const quantityInCart = useSelector((state: RootState) => state.cart.quantity);
 
   const [width] = useWindowSize();
   const burgerClass = openNav ? classes.active : '';
@@ -58,6 +61,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {openCart && <Cart />}
     </div>
   );
 };
