@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Page from './pages/Page/Page';
 import './App.scss';
+import Product from './pages/Product/Product';
 
 const Layout = () => {
   return (
@@ -26,6 +27,9 @@ const router = createBrowserRouter([
       },{
         path: '/:pageSlug',
         element: <Page />
+      },{
+        path: "/product/:id",
+        element: <Product />
       }
     ]
   }

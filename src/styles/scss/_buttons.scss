@@ -1,0 +1,21 @@
+
+
+@mixin button() {
+  border: none;
+  border-radius: 24px;
+  width: auto;
+  height: auto;
+  line-height: 48px;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 40px;
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin buttonPrimary() {
+  background-color: #cdc8c4;
+  color: #fff;
+}
