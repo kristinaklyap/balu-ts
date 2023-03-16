@@ -3,8 +3,9 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Page from './pages/Page/Page';
-import './App.scss';
 import Product from './pages/Product/Product';
+import Products from './pages/Products/Products';
+import './App.scss';
 
 const Layout = () => {
   return (
@@ -24,12 +25,15 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
-      },{
+      }, {
         path: '/:pageSlug',
         element: <Page />
-      },{
-        path: "/product/:id",
+      }, {
+        path: '/product/:id',
         element: <Product />
+      }, {
+        path: '/products/',
+        element: <Products />
       }
     ]
   }

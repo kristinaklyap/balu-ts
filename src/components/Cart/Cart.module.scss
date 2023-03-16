@@ -60,6 +60,9 @@
       cursor: pointer;
       transition: ease all .3s;
 
+      path {
+        stroke-width: 0.8px;
+      }
       &:hover {
         opacity: .7;
       }

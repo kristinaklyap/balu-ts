@@ -19,14 +19,13 @@ const Page = () => {
     `/pages?filters[page_url][$contains]=${pageSlug}&populate=deep`
   );
 
-  const productData = data ? data[0] : null;
+  const pageData = data ? data[0] : null;
   return (
     <>
-      {productData &&
+      {pageData &&
         <div className={classes.page}>
           {
-            productData && <ContentRepeater data={productData} />
-
+            pageData && <ContentRepeater data={pageData} />
           }
         </div>
       }
