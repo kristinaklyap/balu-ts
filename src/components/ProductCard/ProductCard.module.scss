@@ -1,0 +1,118 @@
+@use "./src/styles/scss/breakpoints";
+@use "./src/styles/scss/colors";
+@use "./src/styles/scss/mixins";
+
+.product_card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+  padding: 0 20px 20px;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+  cursor: pointer;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 10;
+  }
+
+  &:hover {
+    @include mixins.custom-box-shadow();
+    transition: ease-all .3s;
+  }
+
+  &__image {
+    width: 100%;
+    height: 220px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+  }
+
+  &__name {
+    font-size: 18px;
+    color: colors.$text;
+  }
+
+  &__price {
+    font-size: 18px;
+    color: colors.$quaternary;
+    padding-top: 10px;
+  }
+
+  &__button {
+    pointer-events: auto;
+    cursor: pointer;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    line-height: 1em;
+    color: colors.$white;
+    background: colors.$primary;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .product_overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    cursor: auto;
+    z-index: 10;
+    display: none;
+
+    .add {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: colors.$secondary;
+      color: colors.$white;
+      border-radius: 50%;
+      z-index: 12;
+      pointer-events: all;
+      cursor: pointer;
+      &:hover {
+        background-color: colors.$quaternary;
+      }
+    }
+  }
+
+  &:hover {
+    .product_overlay {
+      display: flex;
+
+    }
+  }
+
+  form input {
+    display: none;
+  }
+
+  @media (max-width: breakpoints.$tabletMediumBreakpoint) {
+    flex: 1;
+    flex-basis: 40%;
+  }
+  @media (max-width: breakpoints.$mediumMobileBreakpoint) {
+    flex-basis: 100%;
+  }
+
+}

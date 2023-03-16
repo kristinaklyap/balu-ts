@@ -6,7 +6,7 @@ $contentWidth: 1200px;
 }
 
 @mixin fullHeight() {
-  min-height: calc(100vh - 80px - 230px);
+  min-height: fit-content;
 }
 
 .container {
