@@ -31,12 +31,9 @@ jobs:
       
     - name: Deploy
       run: |
-        echo ${{ secrets.DEPLOY_KEY }} > deploy.key
+        echo $DEPLOY_KEY > deploy.key
         scp -i deploy.key -r -P 10520 build root@srv16.mikr.us:/var/www/balu-ts
       env:
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        github_token: ${{ secrets.BALU_DEPLOY }}
-        repository: ${{ github.repository }}
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         
         
