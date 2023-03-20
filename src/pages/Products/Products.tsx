@@ -24,7 +24,6 @@ const Products = () => {
       {pageData && <ContentRepeater data={pageData} />}
 
       <Container>
-        <SectionTitle content={'PRODUKTY'} alignment={'center'} component={'h3'} variant={'h4'}/>
         <div className={classes.products}>
           {productList &&
             productList.map(product => <ProductCard key={product.id} product={product} />)}
