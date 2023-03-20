@@ -6,21 +6,35 @@ import Typography from '../Typography/Typography';
 import { ReactComponent as DeleteIcon } from './../../assets/delete.svg';
 import { Link } from 'react-router-dom';
 import classes from './Cart.module.scss';
+import {loadStripe} from '@stripe/stripe-js';
+import {makeRequest} from "../../helpers/make-request";
 
-interface CartProps {
-
-}
-
-const Cart: React.FC<CartProps> = (props) => {
+const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.cart.products);
   const subtotal = Math.abs(useSelector((state: RootState) => state.cart.total)).toFixed(2);
   const resetCartHandler = () => dispatch(resetCart());
   const removeFromCartHandler = (item: cartItem) => dispatch(removeItem(item.id));
 
-  const handlePayments = () => {
+  const stripeKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!
+  const stripePromise = loadStripe(stripeKey);
+  const handlePayments = async () => {
+    try {
+      const stripe = await stripePromise
+      const res = await makeRequest.post("/orders", {
+        products
+      })
 
-  };
+      await stripe?.redirectToCheckout({
+        sessionId: res.data.stripeSession.id
+      })
+
+      dispatch(resetCart())
+
+    } catch (err) {
+      console.error(err, 'from frontend')
+    }
+  }
 
   return (
     <div className={classes.cart}>
@@ -43,7 +57,7 @@ const Cart: React.FC<CartProps> = (props) => {
       ))}
       <div className={classes.total}>
         <span>SUMA</span>
-        <span>{subtotal}</span>
+        <span>{subtotal} PLN</span>
       </div>
       <button onClick={handlePayments}>Zamów</button>
       <span className={classes.reset} onClick={resetCartHandler}>wyczyść koszyk</span>

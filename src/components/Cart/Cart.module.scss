@@ -51,6 +51,7 @@
 
     .price {
       color: colors.$quaternary;
+      font-size: fonts.$disclaimer;
     }
 
     svg {
@@ -86,5 +87,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 30px 0;
+    color: colors.$quaternary;
+
   }
 }
