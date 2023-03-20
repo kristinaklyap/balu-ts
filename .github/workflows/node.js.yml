@@ -36,7 +36,7 @@ jobs:
         username: root
         key: ${{ secrets.DEPLOY_KEY }}
         port: 10520
-        source: "build/"
+        source: "build/*"
         target: "/var/www/balu-ts"
         
         
