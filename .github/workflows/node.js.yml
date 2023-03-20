@@ -38,5 +38,7 @@ jobs:
         port: 10520
         source: "build/*"
         target: "/var/www/balu-ts"
+        strip_components: 1
+
         
         
