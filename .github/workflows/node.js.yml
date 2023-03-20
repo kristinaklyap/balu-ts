@@ -32,6 +32,7 @@ jobs:
     - name: Deploy
       run: |
         echo $DEPLOY_KEY > deploy.key
+        chmod 0644 deploy.key
         scp -i deploy.key -r -P 10520 build root@srv16.mikr.us:/var/www/balu-ts
       env:
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
