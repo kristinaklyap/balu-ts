@@ -1,24 +1,26 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
+import { RootState } from '../../store';
+import Cart from '../Cart/Cart';
 import { useWindowSize } from '../../hooks/use-windows-size';
 
 import { ReactComponent as Logo } from './../../assets/logo.svg';
 import { ReactComponent as CartIcon } from './../../assets/cart.svg';
 import classes from './Header.module.scss';
-import Cart from '../Cart/Cart';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
 
 const Header = () => {
   const [openCart, setOpenCart] = useState(false);
   const [openNav, setOpenNav] = useState(false);
   const quantityInCart = useSelector((state: RootState) => state.cart.quantity);
-
   const [width] = useWindowSize();
+
   const burgerClass = openNav ? classes.active : '';
   const navClass = openNav
     ? `${classes.nav} ${classes.active} `
     : `${classes.nav}`;
+
   return (
     <div className={classes.header}>
       <div className="container">

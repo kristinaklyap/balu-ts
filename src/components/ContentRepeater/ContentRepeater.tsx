@@ -1,12 +1,12 @@
+import PageInterface from './../../models/PageInterface';
 import Banner from '../Banner/Banner';
 import Container from '../Container/Container';
 import Typography from '../Typography/Typography';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import { PageProps } from '../../pages/Page/Page';
 import Slider from '../Slider/Slider';
 
 interface ContentRepeaterProps {
-  data: PageProps | null,
+  data: PageInterface | null,
   excluded?: string[]
 }
 
@@ -20,6 +20,7 @@ const ContentRepeater: React.FC<ContentRepeaterProps> = ({ data, excluded }) => 
         if (type === 'banner.banner' && !excluded?.includes('banner.banner')) {
           const { banner_image, banner_size, banner_title } = item;
           const imgUrl = `${process.env.REACT_APP_UPLOAD_URL}${banner_image['data']['attributes']['url']}`;
+
           return (
             <Banner key={index}
                     image={imgUrl}
@@ -56,8 +57,6 @@ const ContentRepeater: React.FC<ContentRepeaterProps> = ({ data, excluded }) => 
               <SectionTitle content={title} variant={variant} weight={weight} border={border}
                             component={component} alignment={alignment} />
             </Container>);
-
-
         }
 
         if (type === 'slider.slider' && !excluded?.includes('slider.slider')) {

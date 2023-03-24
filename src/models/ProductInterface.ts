@@ -7,7 +7,7 @@ export type ImageProps = {
 
 }
 
-export interface ProductInterface {
+export default interface ProductInterface {
   id: number;
   attributes: {
     images: {

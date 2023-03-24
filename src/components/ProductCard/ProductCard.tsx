@@ -1,20 +1,21 @@
 import { NavLink } from 'react-router-dom';
-import classes from "./ProductCard.module.scss";
-import { ProductInterface } from '../../models/ProductInterface';
-import { addToCart } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 
+import ProductInterface from '../../models/ProductInterface';
+import { addToCart } from '../../store/cart';
+
+import classes from './ProductCard.module.scss';
 
 interface ProductCardProps {
-  product:ProductInterface
+  product: ProductInterface;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({product}) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
 
   const IMG_PREFIX = process.env.REACT_APP_UPLOAD_URL;
-
   const images = product?.attributes.images.data.map((img) => `${IMG_PREFIX}${img.attributes.url}`);
+
   const addToCartHandler = () => {
     if (product && images) {
       dispatch(addToCart({
@@ -26,6 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
       }));
     }
   };
+
   return (
     <div>
       <div className={classes.product_card}>
@@ -33,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
           {
             images &&
             <div className={classes.product_card__image}
-                 style={{backgroundImage: `url(${images[0]})`}}></div>
+                 style={{ backgroundImage: `url(${images[0]})` }} />
           }
           <span className={classes.product_card__name}>{product.attributes.title}</span>
           <span className={classes.product_card__price}>{product.attributes.price}PLN</span>
