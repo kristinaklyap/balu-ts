@@ -1,31 +1,14 @@
-import { useParams } from 'react-router-dom';
-import useFetch from '../../hooks/use-fetch.hook';
-import Container from '../../components/Container/Container';
-import classes from './Product.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import useFetch from '../../hooks/use-fetch.hook';
 import { addToCart } from '../../store/cart';
 
-type ImageProps = {
-  id: number;
-  attributes: {
-    url: string;
-  }
+import ProductInterface from './../../models/ProductInterface';
 
-}
-
-interface ProductInterface {
-  id: number;
-  attributes: {
-    images: {
-      data: ImageProps[]
-    },
-    description: string;
-    title: string;
-    price: number;
-    price_old: number;
-  };
-}
+import Container from '../../components/Container/Container';
+import classes from './Product.module.scss';
 
 const IMG_PREFIX = process.env.REACT_APP_UPLOAD_URL;
 
@@ -41,6 +24,7 @@ const Product = () => {
   );
 
   const images = data?.attributes.images.data.map((img) => `${IMG_PREFIX}${img.attributes.url}`);
+
   const addToCartHandler = () => {
     if (data && images) {
       dispatch(addToCart({
@@ -52,11 +36,10 @@ const Product = () => {
       }));
     }
   };
+
   return (
     <div className={classes.product_teaser}>
       {data &&
-
-
         <Container>
           <div className={classes.product}>
             {
@@ -72,7 +55,6 @@ const Product = () => {
                 </div>
               </div>
             }
-
 
             <div className={classes.product__info}>
               <h1 className={classes.product__name}>{data.attributes.title}</h1>
@@ -93,7 +75,6 @@ const Product = () => {
                     Add to cart
                   </button>
                 </div>
-
               </div>
             </div>
           </div>

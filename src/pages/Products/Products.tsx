@@ -1,9 +1,10 @@
 import useFetch from '../../hooks/use-fetch.hook';
-import { ProductInterface } from '../../models/ProductInterface';
+import ProductInterface from '../../models/ProductInterface';
 import Container from '../../components/Container/Container';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import ContentRepeater from '../../components/ContentRepeater/ContentRepeater';
-import { PageProps } from '../Page/Page';
+import PageInterface from './../../models/PageInterface';
+
 import classes from './Products.module.scss';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 
@@ -14,7 +15,7 @@ const Products = () => {
 
   const pageSlug = 'products';
 
-  const { data } = useFetch<PageProps[]>(
+  const { data } = useFetch<PageInterface[]>(
     `/pages?filters[page_url][$contains]=${pageSlug}&populate=deep`
   );
 

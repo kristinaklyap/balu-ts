@@ -1,4 +1,5 @@
 @use "./src/styles/scss/breakpoints";
+@use "./src/styles/scss/colors";
 @import "src/styles/scss/buttons";
 
 .product {
@@ -12,15 +13,18 @@
     min-width: 50%;
     width: 100%;
   }
+
   &__image {
     width: 100%;
     overflow: hidden;
+
     img {
       width: 100%;
       height: 100%;
       object-position: center;
       object-fit: contain;
       transition: ease all .5s;
+
       &:hover {
         transform: scale(2);
       }
@@ -41,6 +45,7 @@
       cursor: pointer;
     }
   }
+
   &__info {
     padding-left: 5rem;
     width: 100%;
@@ -56,7 +61,7 @@
       position: absolute;
       height: 1px;
       width: 100px;
-      background-color: #767676;
+      background-color: colors.$secondary;
       bottom: 0;
       left: 0;
     }
@@ -67,26 +72,6 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 50px;
-
-    form {
-      display: flex;
-      align-items: flex-end;
-
-      div {
-        margin-right: 20px;
-
-        input {
-          border: none;
-          border-bottom: 1px solid #767676;
-          text-align: center;
-          padding-left: 10px;
-
-          &::placeholder {
-            text-align: center;
-          }
-        }
-      }
-    }
   }
 
   .price_container {
@@ -98,34 +83,39 @@
       margin-bottom: 0;
       font-size: 18px;
       color: #635347;
+
       &--old {
         font-size: 12px;
-        color: #767676;
+        color: colors.$secondary;
         text-decoration: line-through;
       }
     }
 
     .product__SKU {
       font-size: 12px;
-      color: #767676;
+      color: colors.$secondary;
       line-height: 1em;
     }
   }
+
   .add_to_cart {
     display: flex;
     align-items: center;
     gap: 5px;
+
     button {
       background: transparent;
       border: none;
       padding: 10px;
       cursor: pointer;
+
       &.add_to_cart_btn {
         @include button;
         @include buttonPrimary
       }
     }
   }
+
   @media (max-width: breakpoints.$tabletBreakpoint) {
     flex-wrap: wrap;
     padding: 100px 20px 0;

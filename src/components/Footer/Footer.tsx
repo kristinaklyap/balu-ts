@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import { ReactComponent as Logo } from './../../assets/logo.svg';
 import { ReactComponent as InstagramLogo } from './../../assets/instagram.svg';
 import classes from './Footer.module.scss';

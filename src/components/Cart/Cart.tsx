@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { Link } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
 
+import { RootState } from '../../store';
+import { makeRequest } from '../../helpers/make-request';
 import { cartItem, removeItem, resetCart } from '../../store/cart';
 import Typography from '../Typography/Typography';
+
 import { ReactComponent as DeleteIcon } from './../../assets/delete.svg';
-import { Link } from 'react-router-dom';
 import classes from './Cart.module.scss';
-import {loadStripe} from '@stripe/stripe-js';
-import {makeRequest} from "../../helpers/make-request";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -16,25 +17,25 @@ const Cart = () => {
   const resetCartHandler = () => dispatch(resetCart());
   const removeFromCartHandler = (item: cartItem) => dispatch(removeItem(item.id));
 
-  const stripeKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!
+  const stripeKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY!;
   const stripePromise = loadStripe(stripeKey);
   const handlePayments = async () => {
     try {
-      const stripe = await stripePromise
-      const res = await makeRequest.post("/orders", {
+      const stripe = await stripePromise;
+      const res = await makeRequest.post('/orders', {
         products
-      })
+      });
 
       await stripe?.redirectToCheckout({
         sessionId: res.data.stripeSession.id
-      })
+      });
 
-      dispatch(resetCart())
+      dispatch(resetCart());
 
     } catch (err) {
-      console.error(err, 'from frontend')
+      console.error(err, 'from frontend');
     }
-  }
+  };
 
   return (
     <div className={classes.cart}>

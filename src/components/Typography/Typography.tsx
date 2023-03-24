@@ -17,6 +17,7 @@ const Typography: React.FC<TypographyProps> = (
     alignment = 'left'
   }) => {
   const Tag = component;
+
   return (
     <Tag className={classes.typography} data-weight={weight} data-variant={variant}
          data-alignment={alignment}>{content}</Tag>

@@ -1,5 +1,5 @@
-import classes from './Slider.module.scss';
 import { useEffect, useState } from 'react';
+import classes from './Slider.module.scss';
 
 export interface SlideProps {
   image: {
