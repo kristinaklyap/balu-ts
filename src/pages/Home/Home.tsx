@@ -12,7 +12,7 @@ import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import classes from '../../components/Banner/Banner.module.scss';
 import productClasses from '../Products/Products.module.scss';
 
-
+const uploadUrl = process.env.REACT_APP_UPLOAD_URL;
 const Home = () => {
 
   const { data, isError, isLoading } = useFetch<PageInterface[]>(
@@ -23,14 +23,12 @@ const Home = () => {
     `/products/?populate=*`
   );
 
-  const homeData = data ? data[0] : null;
+  const homeData = data?.[0] ?? null;
 
-  // @ts-ignore
-  const banner: BannerType[] = homeData && homeData?.attributes?.content.filter(item => item['__component'] === 'banner.banner');
+  const banner = homeData && homeData?.attributes?.content.filter(item => item['__component'] === 'banner.banner');
   let bannerUrl = null;
-
-  if (banner && banner.length !== 0) {
-    bannerUrl = `${process.env.REACT_APP_UPLOAD_URL}${banner[0].banner_image.data.attributes.url}`;
+  if (banner) {
+    bannerUrl = `${uploadUrl}${banner[0]['banner_image']['data']['attributes']['url']}`;
   }
 
   return <div>
@@ -47,8 +45,7 @@ const Home = () => {
       <Container>
         <SectionTitle content={'PRODUKTY'} alignment={'center'} component={'h3'} variant={'h3'} />
         <div className={productClasses.products}>
-          {productList &&
-            productList.map(product => <ProductCard key={product.id} product={product} />)}
+          {productList.map(product => <ProductCard key={product.id} product={product} />)}
         </div>
       </Container>
     }

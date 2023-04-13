@@ -15,9 +15,7 @@ const Banner: React.FC<BannerProps> = ({ image, title, size, children }) => {
         <img src={image} alt={`${title} banner`} />
       </div>
       <div className={classes.banner__content}>
-        {!children && <h1>{title}</h1>}
-        {children && children}
-
+        {children ? children : <h1>{title}</h1>}
       </div>
     </div>
   );
