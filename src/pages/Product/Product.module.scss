@@ -72,6 +72,26 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 50px;
+
+    form {
+      display: flex;
+      align-items: flex-end;
+
+      div {
+        margin-right: 20px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid #767676;
+          text-align: center;
+          padding-left: 10px;
+
+          &::placeholder {
+            text-align: center;
+          }
+        }
+      }
+    }
   }
 
   .price_container {
