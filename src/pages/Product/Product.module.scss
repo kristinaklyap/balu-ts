@@ -72,6 +72,26 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 50px;
+
+    form {
+      display: flex;
+      align-items: flex-end;
+
+      div {
+        margin-right: 20px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid #767676;
+          text-align: center;
+          padding-left: 10px;
+
+          &::placeholder {
+            text-align: center;
+          }
+        }
+      }
+    }
   }
 
   .price_container {
@@ -116,7 +136,7 @@
     }
   }
 
-  @media (max-width: breakpoints.$tabletBreakpoint) {
+  @media (max-width: breakpoints.$tabletMediumBreakpoint) {
     flex-wrap: wrap;
     padding: 100px 20px 0;
     &__image {
@@ -129,6 +149,10 @@
   @media (max-width: breakpoints.$mediumMobileBreakpoint) {
     &__info {
       text-align: left;
+    }
+    .actions {
+      flex-direction: column;
+      gap: 20px;
     }
   }
 }
