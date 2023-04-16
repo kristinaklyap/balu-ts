@@ -1,5 +1,0 @@
-@use 'colors';
-
-@mixin custom-box-shadow($color: colors.$black, $offsetY: 2px) {
-  box-shadow: 0 $offsetY 8px rgba($color, .25)
-}

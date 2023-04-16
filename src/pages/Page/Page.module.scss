@@ -1,9 +1,0 @@
-@import './src/styles/scss/container';
-
-.page {
-  @include fullHeight;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
