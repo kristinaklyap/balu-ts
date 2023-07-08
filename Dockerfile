@@ -1,3 +1,3 @@
-FROM jauderho/nginx:1.25.0
+FROM bitnami/nginx:1.25.1
 COPY build /build
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /opt/bitnami/nginx/conf/server_blocks/nginx.conf

@@ -79,7 +79,7 @@ pipeline {
           sh """
             cd helm
             helm upgrade --install ${service} . \
-            --namespace ${namespaceDev} \
+            --namespace ${namespace} \
             --create-namespace \
             -f values.yaml \
             -f values-dev.yaml

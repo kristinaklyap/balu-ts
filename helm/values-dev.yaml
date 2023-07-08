@@ -8,7 +8,7 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   labels:
     cert-manager.io/cluster-issuer: balu-cluster
   annotations:
