@@ -15,7 +15,7 @@ This repo contains only frontend part of the project.
 
 ## Demo
 
-https://balu.bieda.it/
+https://balu.kristi.guru/
 
 
 ## Tech Stack
@@ -59,3 +59,23 @@ https://balu.bieda.it/
         └── scss
 
  ```
+
+## Development
+start development:
+
+    okteto up
+
+stop development
+
+    okteto down
+
+## Build and Deployment
+Automated with jenkins. Some secrets are needed during build.
+
+### add secrets for jenkins
+
+    source .env
+    kubectl -n jenkins create secret generic balu-client-envs \
+        --from-literal=REACT_APP_API_TOKEN=$REACT_APP_API_TOKEN \
+        --from-literal=REACT_APP_STRIPE_PUBLISHABLE_KEY=$REACT_APP_STRIPE_PUBLISHABLE_KEY
+
