@@ -90,4 +90,8 @@
     color: colors.$quaternary;
 
   }
+
+  @media screen and (max-width: 425px){
+    max-width: 100vw;
+  }
 }

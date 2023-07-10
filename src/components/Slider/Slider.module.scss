@@ -97,7 +97,7 @@
   }
 
   @media (max-width: breakpoints.$mobileBreakpoint) {
-    height: 850px;
+    height: fit-content;
     padding-bottom: 100px;
     &_item {
       min-width: 95%;
@@ -105,6 +105,11 @@
       &--content {
         padding: 0 30px;
       }
+    }
+    &--dots {
+     .dot {
+       width: 80px;
+     }
     }
   }
   @media (max-width: breakpoints.$smallMobileBreakpoint) {

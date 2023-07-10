@@ -5,6 +5,10 @@
 @import "spacings";
 @import "container";
 
+body, html {
+  width: 100vw;
+  overflow-x: hidden;
+}
 
 body {
   font-family: 'Montserrat', sans-serif;

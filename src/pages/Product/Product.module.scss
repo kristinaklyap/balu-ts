@@ -1,5 +1,6 @@
 @use "./src/styles/scss/breakpoints";
 @use "./src/styles/scss/colors";
+@use "src/styles/scss/fonts";
 @import "src/styles/scss/buttons";
 
 .product {
@@ -55,6 +56,7 @@
   &__name {
     position: relative;
     padding-bottom: 10px;
+    font-size: fonts.$h6;
 
     &:after {
       content: '';
@@ -146,6 +148,17 @@
       padding-left: 0;
     }
   }
+  @media (max-width: breakpoints.$mobileBreakpoint) {
+    &__images__container {
+      flex-direction: column-reverse;
+    }
+    &__images {
+      flex-direction: row;
+      img {
+        max-width: 100px;
+      }
+    }
+  }
   @media (max-width: breakpoints.$mediumMobileBreakpoint) {
     &__info {
       text-align: left;
@@ -153,6 +166,17 @@
     .actions {
       flex-direction: column;
       gap: 20px;
+    }
+  }
+
+  @media (max-width: breakpoints.$smallMobileBreakpoint) {
+
+    .add_to_cart {
+      button {
+        &.add_to_cart_btn {
+          font-size: 18px;
+        }
+      }
     }
   }
 }
