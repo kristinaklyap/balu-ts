@@ -1,0 +1,19 @@
+name: balu-ts
+namespace: balu-dev
+deploy:
+  - cd helm && helm upgrade --install balu-ts .
+    --namespace balu-dev
+    --create-namespace
+    --values=values.yaml
+    --values=values-dev.yaml
+    --set image.repository=node
+    --set image.tag=18.16.0-slim
+    --set config.NODE_ENV=development
+dev:
+  balu-ts:
+    command: npm i && npm run dev
+    workdir: /app
+    sync:
+      - .:/app
+    forward:
+      - 8080:80

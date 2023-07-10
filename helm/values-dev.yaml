@@ -1,0 +1,32 @@
+image:
+  repository: harbor.kristi.guru/balu/balu-ts
+
+imagePullSecrets:
+  - name: regcred
+
+service:
+  port: 80
+
+ingress:
+  enabled: true
+  labels:
+    cert-manager.io/cluster-issuer: balu-cluster
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+#    traefik.ingress.kubernetes.io/router.middlewares: default-redirectscheme@kubernetescrd,default-ingress-basic-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirectscheme@kubernetescrd
+
+  hosts:
+    - host: balu.kristi.guru
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: balu-ts-cert
+      hosts:
+        - balu.kristi.guru
+
+config:
+  REACT_APP_UPLOAD_URL: https://api.balu.kristi.guru
+  REACT_APP_API_URL: https://api.balu.kristi.guru/api
+  NODE_ENV: production
