@@ -1,4 +1,5 @@
 @use './src/styles/scss/colors';
+@use '../../styles/scss/breakpoints';
 
 $alignments: (left, center, right);
 
@@ -58,5 +59,12 @@ $alignments: (left, center, right);
     left: 5px;
   }
 
-
+  @media (max-width: breakpoints.$smallMobileBreakpoint) {
+    &[data-border] {
+      &:after {
+        width: 90px;
+        bottom: 10px;
+      }
+    }
+  }
 }

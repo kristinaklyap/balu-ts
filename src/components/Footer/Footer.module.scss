@@ -81,4 +81,19 @@
       }
     }
   }
+
+  @media (max-width: breakpoints.$smallMobileBreakpoint) {
+    ul {
+      margin: 10px 0 0;
+      li{
+        a  {
+          font-size: fonts.$disclaimer;
+        }
+      }
+    }
+    .social_container span {
+      font-size: fonts.$disclaimer;
+    }
+
+  }
 }

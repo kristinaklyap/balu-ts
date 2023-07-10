@@ -1,4 +1,5 @@
 @use '../../styles/scss/fonts';
+@use '../../styles/scss/breakpoints';
 
 $fonts: ("h1": fonts.$h1, "h2": fonts.$h2, "h3": fonts.$h3, "h4": fonts.$h4, "h5": fonts.$h5, "h6": fonts.$h6, "p": fonts.$p, "disclaimer":fonts.$disclaimer);
 $weights: ("light": 300, "regular": 400, "medium":500, "bold":700);
@@ -24,5 +25,9 @@ $alignments: (left, center, right);
       text-align: $name;
     }
   }
-
+  @media (max-width: breakpoints.$smallMobileBreakpoint) {
+    &[data-variant=h3],&[data-variant=h4] {
+      font-size: 30px;
+    }
+  }
 }
